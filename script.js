@@ -5,13 +5,16 @@ const resetBtn = document.getElementById("reset");
 let time = 1500; 
 let interval;
 
+function formatTime(value) {
+  return value < 10 ? "0" + value : value.toString();
+}
+
+
 function updateTimer() {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
-  if (seconds < 10) {
-    seconds = "0" + seconds;
-  }
-  pomodoroTime.textContent = `${minutes}:${seconds}`;
+
+  pomodoroTime.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
   
   if (time === 0) {
     clearInterval(interval); 
